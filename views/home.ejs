@@ -1,0 +1,22 @@
+<%- include('partials/header') %>
+
+<h1>Today's menu</h1>
+<p class="muted">Fresh from the canteen kitchen. Prices in USD.</p>
+
+<div class="grid">
+  <% products.forEach(function (product) { %>
+    <article class="card">
+      <h2><a href="/products/<%= product.id %>"><%= product.name %></a></h2>
+      <p class="muted"><%= product.category %></p>
+      <p><%= product.description %></p>
+      <p class="price">$<%= product.price.toFixed(2) %></p>
+      <form action="/cart/add" method="post">
+        <input type="hidden" name="id" value="<%= product.id %>">
+        <input type="number" name="qty" value="1" min="1" max="10">
+        <button type="submit">Add to cart</button>
+      </form>
+    </article>
+  <% }) %>
+</div>
+
+<%- include('partials/footer') %>

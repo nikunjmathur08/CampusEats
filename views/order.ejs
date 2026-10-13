@@ -1,0 +1,36 @@
+<%- include('partials/header') %>
+
+<h1>Order #<%= order.id %></h1>
+
+<p class="muted">Placed <%= order.created_at %> · Status: <%= order.status %></p>
+
+<table class="cart-table">
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Price</th>
+      <th>Qty</th>
+      <th>Line total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% items.forEach(function (item) { %>
+      <tr>
+        <td><%= item.name %></td>
+        <td>$<%= item.price.toFixed(2) %></td>
+        <td><%= item.qty %></td>
+        <td>$<%= (item.price * item.qty).toFixed(2) %></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+<p>Total: <strong>$<%= order.total.toFixed(2) %></strong></p>
+
+<p>
+  <a href="/orders/<%= order.id %>/receipt">Download receipt</a>
+  ·
+  <a href="/orders">Back to orders</a>
+</p>
+
+<%- include('partials/footer') %>

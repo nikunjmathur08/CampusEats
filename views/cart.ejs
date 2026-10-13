@@ -1,0 +1,51 @@
+<%- include('partials/header') %>
+
+<h1>Your cart</h1>
+
+<% if (cart.length === 0) { %>
+  <p class="muted">Your cart is empty. <a href="/">Browse the menu</a>.</p>
+<% } else { %>
+  <table class="cart-table">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Qty</th>
+        <th>Line total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% cart.forEach(function (item) { %>
+        <tr>
+          <td><%= item.name %></td>
+          <td>$<%= item.price.toFixed(2) %></td>
+          <td><%= item.qty %></td>
+          <td>$<%= (item.price * item.qty).toFixed(2) %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+  <p>Subtotal: <strong id="subtotal">$<%= subtotal.toFixed(2) %></strong></p>
+  <p id="discount-line" class="muted" hidden></p>
+
+  <form id="coupon-form" class="inline-form">
+    <input type="text" name="coupon" placeholder="Coupon expression" value="total * 0.9">
+    <button type="submit">Apply coupon</button>
+  </form>
+
+  <% if (message) { %>
+    <p class="error"><%= message %></p>
+  <% } %>
+
+  <% if (currentUser) { %>
+    <form action="/checkout" method="post" class="checkout-form">
+      <input type="hidden" name="cart" value="<%= JSON.stringify(cart) %>">
+      <button type="submit">Checkout</button>
+    </form>
+  <% } else { %>
+    <p class="muted"><a href="/login?next=/cart">Log in</a> to check out.</p>
+  <% } %>
+<% } %>
+
+<%- include('partials/footer') %>

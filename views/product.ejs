@@ -1,0 +1,51 @@
+<%- include('partials/header') %>
+
+<article class="card product-page">
+  <h1><%= product.name %></h1>
+  <p class="muted"><%= product.category %></p>
+  <p><%= product.description %></p>
+  <p class="price">$<%= product.price.toFixed(2) %></p>
+  <form action="/cart/add" method="post">
+    <input type="hidden" name="id" value="<%= product.id %>">
+    <input type="number" name="qty" value="1" min="1" max="10">
+    <button type="submit">Add to cart</button>
+  </form>
+</article>
+
+<h2>Reviews</h2>
+
+<% if (reviews.length === 0) { %>
+  <p class="muted">No reviews yet.</p>
+<% } %>
+
+<% reviews.forEach(function (review) { %>
+  <blockquote class="review">
+    <p class="muted"><%= review.username %> rated it <%= review.rating %>/5</p>
+    <p><%- review.body %></p>
+  </blockquote>
+<% }) %>
+
+<% if (currentUser) { %>
+  <form action="/products/<%= product.id %>/reviews" method="post" class="review-form">
+    <h3>Leave a review</h3>
+    <label>
+      Rating
+      <select name="rating">
+        <option value="5">5 - Excellent</option>
+        <option value="4">4 - Good</option>
+        <option value="3">3 - Okay</option>
+        <option value="2">2 - Poor</option>
+        <option value="1">1 - Bad</option>
+      </select>
+    </label>
+    <label>
+      Your review
+      <textarea name="body" rows="3" required></textarea>
+    </label>
+    <button type="submit">Post review</button>
+  </form>
+<% } else { %>
+  <p class="muted"><a href="/login">Log in</a> to leave a review.</p>
+<% } %>
+
+<%- include('partials/footer') %>

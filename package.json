@@ -1,0 +1,23 @@
+{
+  "name": "campuseats",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CampusEats canteen ordering app for a university security workshop",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "reset": "node -e \"require('./db').reset(); console.log('Database reset and reseeded.');\""
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.2.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "lodash": "4.17.15"
+  }
+}

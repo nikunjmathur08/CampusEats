@@ -1,0 +1,19 @@
+<%- include('partials/header') %>
+
+<h1><%= title %></h1>
+
+<p class="error"><%= message %></p>
+
+<% if (stack) { %>
+  <h2>Stack trace</h2>
+  <pre class="stack"><%= stack %></pre>
+<% } %>
+
+<% if (sql) { %>
+  <h2>Query</h2>
+  <pre class="stack"><%= sql %></pre>
+<% } %>
+
+<p><a href="/">Back to the menu</a></p>
+
+<%- include('partials/footer') %>

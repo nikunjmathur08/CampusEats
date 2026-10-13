@@ -1,0 +1,35 @@
+<%- include('partials/header') %>
+
+<h1>Admin dashboard</h1>
+
+<div class="stat-grid">
+  <div class="card stat">
+    <p class="stat-number"><%= stats.users %></p>
+    <p class="muted">Registered users</p>
+  </div>
+  <div class="card stat">
+    <p class="stat-number"><%= stats.products %></p>
+    <p class="muted">Menu items</p>
+  </div>
+  <div class="card stat">
+    <p class="stat-number"><%= stats.orders %></p>
+    <p class="muted">Orders</p>
+  </div>
+  <div class="card stat">
+    <p class="stat-number">$<%= stats.revenue.toFixed(2) %></p>
+    <p class="muted">Revenue</p>
+  </div>
+</div>
+
+<h2>Export report</h2>
+
+<form action="/admin/export" method="get" class="search-form">
+  <input type="text" name="name" value="<%= name %>" placeholder="Report name">
+  <button type="submit">Export</button>
+</form>
+
+<% if (result) { %>
+  <pre class="report"><%= result %></pre>
+<% } %>
+
+<%- include('partials/footer') %>

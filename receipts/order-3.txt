@@ -1,0 +1,14 @@
+CampusEats - Canteen Receipt
+============================
+Order #: 3
+Date: 2026-10-05
+Customer: sneha
+
+  2 x Paneer Roll        8.00
+  1 x Chocolate Brownie  1.80
+
+Total:                   9.80
+Status: paid
+
+Thank you for eating with us!
+Demo data only - no real payment was taken.

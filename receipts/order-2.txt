@@ -1,0 +1,14 @@
+CampusEats - Canteen Receipt
+============================
+Order #: 2
+Date: 2026-10-03
+Customer: rahul
+
+  1 x Veg Thali          5.50
+  1 x Fresh Lime Soda    1.25
+
+Total:                   6.75
+Status: paid
+
+Thank you for eating with us!
+Demo data only - no real payment was taken.

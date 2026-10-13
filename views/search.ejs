@@ -1,0 +1,28 @@
+<%- include('partials/header') %>
+
+<h1>Search</h1>
+
+<form action="/search" method="get" class="search-form">
+  <input type="text" name="q" value="<%= q %>" placeholder="Search the menu...">
+  <button type="submit">Search</button>
+</form>
+
+<% if (q) { %>
+  <p class="muted">Results for: <strong><%- q %></strong></p>
+<% } %>
+
+<div class="grid">
+  <% products.forEach(function (product) { %>
+    <article class="card">
+      <h2><a href="/products/<%= product.id %>"><%= product.name %></a></h2>
+      <p class="muted"><%= product.category %></p>
+      <p class="price">$<%= product.price.toFixed(2) %></p>
+    </article>
+  <% }) %>
+</div>
+
+<% if (q && products.length === 0) { %>
+  <p>No dishes matched your search.</p>
+<% } %>
+
+<%- include('partials/footer') %>

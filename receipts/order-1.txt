@@ -1,0 +1,14 @@
+CampusEats - Canteen Receipt
+============================
+Order #: 1
+Date: 2026-10-01
+Customer: priya
+
+  1 x Masala Dosa        3.50
+  2 x Masala Chai        1.50
+
+Total:                   5.00
+Status: paid
+
+Thank you for eating with us!
+Demo data only - no real payment was taken.

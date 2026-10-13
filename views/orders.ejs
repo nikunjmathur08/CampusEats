@@ -1,0 +1,30 @@
+<%- include('partials/header') %>
+
+<h1>Order history</h1>
+
+<% if (orders.length === 0) { %>
+  <p class="muted">You have not ordered anything yet. <a href="/">Start an order</a>.</p>
+<% } else { %>
+  <table class="cart-table">
+    <thead>
+      <tr>
+        <th>Order</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% orders.forEach(function (order) { %>
+        <tr>
+          <td><a href="/orders/<%= order.id %>">#<%= order.id %></a></td>
+          <td><%= order.created_at.slice(0, 10) %></td>
+          <td><%= order.status %></td>
+          <td>$<%= order.total.toFixed(2) %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+<% } %>
+
+<%- include('partials/footer') %>

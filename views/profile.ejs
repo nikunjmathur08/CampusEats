@@ -1,0 +1,24 @@
+<%- include('partials/header') %>
+
+<h1>My profile</h1>
+
+<% if (message) { %>
+  <p class="success"><%= message %></p>
+<% } %>
+
+<p class="muted">Username: <%= currentUser.username %> · Role: <%= currentUser.role %></p>
+
+<form action="/profile" method="post" class="stack">
+  <input type="hidden" name="role" value="<%= currentUser.role %>">
+  <label>
+    Email
+    <input type="email" name="email" value="<%= currentUser.email %>">
+  </label>
+  <label>
+    Delivery address
+    <input type="text" name="address" value="<%= currentUser.address %>">
+  </label>
+  <button type="submit">Save profile</button>
+</form>
+
+<%- include('partials/footer') %>
